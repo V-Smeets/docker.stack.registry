@@ -1,20 +1,22 @@
-version: "3.7"
+---
+version: "3.6"
+
+volumes:
+  registry-data:
 
 networks:
   net:
     driver: "overlay"
 
-volumes:
-  data:
-
 services:
   registry:
-    image: "registry:latest"
+    build:
+      context: "./registry"
+    image: "127.0.0.1:5000/registry"
     volumes:
-      - "data:/var/lib/registry"
+      - "registry-data:/var/lib/registry"
     networks:
       - "net"
     ports:
+      # registry
       - "5000:5000"
-
-# vim:sw=2:
