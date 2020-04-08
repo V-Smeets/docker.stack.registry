@@ -17,5 +17,10 @@ services:
       - "net"
     ports:
       - "5000:5000"
+    deploy:
+      mode: "global"
+      placement:
+        constraints:
+          - "node.labels.onup.host==env"
 
 # vim:sw=2:
