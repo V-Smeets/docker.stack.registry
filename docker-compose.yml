@@ -1,6 +1,9 @@
 ---
 version: "3.6"
 
+volumes:
+  registry-data:
+
 networks:
   net:
     driver: "overlay"
@@ -8,6 +11,8 @@ networks:
 services:
   registry:
     image: "registry"
+    volumes:
+      - "registry-data:/var/lib/registry"
     networks:
       - "net"
     ports:
