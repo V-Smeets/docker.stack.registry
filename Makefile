@@ -1,11 +1,5 @@
 #
 STACK_NAME		= registry
-TARGETS			= registry
-PLATFORMS		= linux/amd64
-
-comma			:= ,
-empty			:=
-space			:= $(empty) $(empty)
 
 # General
 all::
