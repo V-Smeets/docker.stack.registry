@@ -9,6 +9,19 @@ networks:
     driver: "overlay"
 
 services:
+  cleanup:
+    build:
+      context: "cleanup"
+    image: "127.0.0.1:5000/registry-cleanup"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - "net"
+    deploy:
+      mode: "global"
+      placement:
+        constraints:
+          - "node.labels.onup.host==env"
   registry:
     image: "registry"
     volumes:

@@ -6,6 +6,12 @@ all::
 clean::
 distclean:: clean
 
+# Images
+all:: images
+images:
+	docker-compose build --pull
+	docker-compose push
+
 # Stack
 all:: stack
 clean::
