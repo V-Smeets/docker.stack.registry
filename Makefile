@@ -1,16 +1,16 @@
 #
 STACK_NAME		= registry
-TARGETS			= registry
-PLATFORMS		= linux/amd64
-
-comma			:= ,
-empty			:=
-space			:= $(empty) $(empty)
 
 # General
 all::
 clean::
 distclean:: clean
+
+# Images
+all:: images
+images:
+	docker-compose build --pull
+	docker-compose push
 
 # Stack
 all:: stack
