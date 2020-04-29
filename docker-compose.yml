@@ -24,6 +24,8 @@ services:
           - "node.labels.onup.host==env"
   registry:
     image: "registry"
+    environment:
+      - REGISTRY_STORAGE_DELETE_ENABLED=true
     volumes:
       - "registry-data:/var/lib/registry"
     networks:
