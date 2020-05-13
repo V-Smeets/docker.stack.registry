@@ -18,9 +18,6 @@ services:
     networks:
       - "net"
     deploy:
-      placement:
-        constraints:
-          - "node.labels.onup.host==env"
       restart_policy:
         condition: any
         delay: 24h
@@ -34,9 +31,5 @@ services:
       - "net"
     ports:
       - "5000:5000"
-    deploy:
-      placement:
-        constraints:
-          - "node.labels.onup.host==env"
 
 # vim:sw=2:
