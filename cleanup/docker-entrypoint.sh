@@ -69,16 +69,13 @@ function startExec()
 
 stackName=$(getStackName $(hostname))
 
-sleep 10
-while :
+# Delay random 1 to 5 minutes.
+sleep $((60 + ( $RANDOM % 240 ) ))
+
+containerIds=$(getContainerIdsByServiceName "${stackName}_${serviveName}")
+
+for containerId in $containerIds
 do
-	containerIds=$(getContainerIdsByServiceName "${stackName}_${serviveName}")
-
-	for containerId in $containerIds
-	do
-		execId=$(createExec "$containerId" registry garbage-collect --delete-untagged /etc/docker/registry/config.yml)
-		startExec "$execId"
-	done
-
-	sleep 86400
+	execId=$(createExec "$containerId" registry garbage-collect --delete-untagged /etc/docker/registry/config.yml)
+	startExec "$execId"
 done
