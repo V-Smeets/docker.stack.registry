@@ -21,6 +21,9 @@ services:
       placement:
         constraints:
           - "node.labels.onup.host==env"
+      restart_policy:
+        condition: any
+        delay: 24h
   registry:
     image: "registry"
     environment:
