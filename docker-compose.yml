@@ -18,10 +18,12 @@ services:
     networks:
       - "net"
     deploy:
-      mode: "global"
       placement:
         constraints:
           - "node.labels.onup.host==env"
+      restart_policy:
+        condition: any
+        delay: 24h
   registry:
     image: "registry"
     environment:
@@ -33,7 +35,6 @@ services:
     ports:
       - "5000:5000"
     deploy:
-      mode: "global"
       placement:
         constraints:
           - "node.labels.onup.host==env"
