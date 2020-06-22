@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-registryUrl="http://127.0.0.1:5000"
+registryUrl="http://PC-Vincent:5000"
 
 function getDigest() {
 	local repository="${1:?No repository defined}"
